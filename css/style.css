@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
+
 /* Global Styles */
 * {
     font-family: 'Ubuntu', sans-serif;
@@ -7,11 +8,10 @@
 
 body {
     padding-top: 56px; /* Height of fixed navbar */
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 100vh;
-    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
 }
 
 
@@ -30,14 +30,17 @@ body {
 
 
 .container-fluid {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 0;
     padding: 20px;
 }
 
 /* Left Column Styles */
 .left-column {
-    background: #d6b3ff;
+    background: paleturquoise;
     padding: 20px;
 }
 
@@ -48,6 +51,27 @@ body {
     border-radius: 50%;
     margin: 20px auto;
     display: block;
+}
+
+.left-column .header {
+    background: transparent ;
+    padding: 15px ;
+    text-align: center;
+}
+
+.left-column .name {
+    font-size: 24px ;
+    line-height: 1.2;
+}
+
+.left-column .role {
+    font-size: 16px ;
+}
+
+.left-column .about {
+    font-size: 14px ;
+    text-align: center;
+    margin-top: 10px ;
 }
 
 /* Title Styles */
@@ -100,6 +124,62 @@ body {
     word-wrap: break-word;
 }
 
+#contactBtn {
+    border: 2px solid #333;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  
+  #contactBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #4CAF50, #2196F3);
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+  
+  #contactBtn:hover::before {
+    left: 0;
+  }
+  
+  #contactBtn:hover {
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  #contactBtn a {
+    text-decoration: none;
+    width: 100%;
+    color: #333;
+  }
+  
+  #contactBtn:hover a {
+    color: white;
+  }
+  
+  #contactBtn a p {
+    padding: 12px 0;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
 /* Skills and Hobbies Styles */
 .skill-item, .hobby-item {
     background: #fff;
@@ -117,7 +197,7 @@ body {
 
 .hobby-item {
     background: transparent;
-    border: 2px solid #fff;
+    border: 2px solid #000;
 }
 
 .hobby-item i,
@@ -126,7 +206,7 @@ body {
 }
 
 .hobby-item:hover {
-    background-color: gray;
+    background-color: lightblue;
 }
 
 .item-icon {
@@ -211,36 +291,325 @@ body {
     margin-top: 15px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .left-column {
+/* Navbar Hover Effects */
+.navbar-nav .nav-link {
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: paleturquoise;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Profile Image Hover Effect */
+.profile-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Skill Item Hover Effects */
+.skill-item {
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: paleturquoise;
+}
+
+.skill-item:hover .item-icon,
+.skill-item:hover .item-text {
+    color: #fff;
+}
+
+/* Contact Items Hover Effect */
+.contact-item {
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.contact-item i {
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover i {
+    transform: scale(1.2);
+}
+
+/* Education and Experience Items Hover Effect */
+.exp-item, .edu-item {
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.exp-item:hover, .edu-item:hover {
+    background: rgba(175, 238, 238, 0.1);
+    transform: translateX(10px);
+}
+
+/* Portfolio Carousel Hover Effects */
+.carousel-item img {
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.02);
+}
+
+/* Section Title Hover Effect */
+.section-title {
+    transition: letter-spacing 0.3s ease;
+}
+
+.section-title:hover {
+    letter-spacing: 6px;
+}
+
+/* Progress Bar Hover Effect */
+.progress {
+    transition: all 0.3s ease;
+}
+
+.progress:hover {
+    transform: scaleX(1.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Hobby Items Enhanced Hover Effect */
+.hobby-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hobby-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hobby-item:hover {
+    transform: translateY(-5px);
+    background: paleturquoise;
+    border-color: transparent;
+}
+
+.hobby-item:hover::before {
+    left: 100%;
+}
+
+.hobby-item:hover i,
+.hobby-item:hover .item-text {
+    color: #000;
+}
+
+/* Fade in animation for sections */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Slide in animation for contact items */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Pulse animation for profile image */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(175, 238, 238, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(175, 238, 238, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(175, 238, 238, 0);
+    }
+  }
+  
+  /* Animation for section titles */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Floating animation for hobby icons */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Apply animations to elements */
+  .section-title {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .profile-img {
+    animation: pulse 2s infinite;
+  }
+  
+  .contact-item {
+    opacity: 0;
+    animation: slideIn 0.5s ease-out forwards;
+  }
+  
+  .contact-item:nth-child(1) { animation-delay: 0.1s; }
+  .contact-item:nth-child(2) { animation-delay: 0.2s; }
+  .contact-item:nth-child(3) { animation-delay: 0.3s; }
+  .contact-item:nth-child(4) { animation-delay: 0.4s; }
+  
+  .hobby-item i {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  #about, #portfolio, #experience, #education, #Skills {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  /* Skill bar animation */
+  .progress-bar {
+    transition: width 1.5s ease-in-out;
+    width: 0;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Animated underline for navbar links */
+  .navbar-nav .nav-link::after {
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Enhanced hover effects */
+  .hobby-item, .skill-item {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .hobby-item:hover, .skill-item:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  /* Entrance animations for portfolio items */
+  .carousel-item {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .carousel-item.active {
+    opacity: 1;
+  }
+  
+  /* Add animation to contact button */
+  #contactBtn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #contactBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* Animate education and experience sections */
+  .edu-date, .exp-date {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .edu-date::after, .exp-date::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: paleturquoise;
+    transition: width 0.3s ease;
+  }
+  
+  .edu-date:hover::after, .exp-date:hover::after {
+    width: 100%;
+  }
+
+ /* Additional responsive adjustments */
+ @media (max-width: 767px) {
+       
+       .about-section {
         margin-bottom: 20px;
     }
-
+    
+    .profile-img {
+        margin-bottom: 15px;
+    }
+    
+    .header {
+        text-align: center;
+        min-height: auto;
+    }
+    
     .name {
         font-size: 36px;
     }
-
-    .exp-item, .edu-item {
-        flex-direction: column;
-    }
-
-    .date {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    .info {
-        width: 100%;
-        padding-left: 0;
-    }
     
-    .section-title {
+    .about {
         text-align: center;
-    }
-
-    .section-title::before {
-        left: 50%;
-        transform: translateX(-50%);
     }
 }
